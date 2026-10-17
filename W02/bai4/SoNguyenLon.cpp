@@ -1,17 +1,20 @@
 #include "SoNguyenLon.h"
 #include <cstdio>
-#include <cstdlib>
 #include <cstring>
 
 SoNguyenLon::SoNguyenLon() {
   buffer = new char[]{"0"};
   a = new int[LEN];
+  nA = 0;
+  fix();
 }
 
 SoNguyenLon::SoNguyenLon(int a) {
   buffer = new char[LEN];
   sprintf(buffer, "%d", a);
   this->a = new int[LEN];
+  nA = 0;
+  fix();
 }
 
 SoNguyenLon::SoNguyenLon(int a, int b) {
@@ -20,16 +23,20 @@ SoNguyenLon::SoNguyenLon(int a, int b) {
   for (int i = 0; i < b; i++) {
     sprintf(temp, "%d", a);
     strcat(buffer, temp);
+    nA = 0;
   }
 
   this->a = new int[LEN];
   delete[] temp;
+  fix();
 }
 
 SoNguyenLon::SoNguyenLon(const char *s) {
   buffer = new char[LEN];
   strcpy(buffer, s);
   this->a = new int[LEN];
+  nA = 0;
+  fix();
 }
 
 SoNguyenLon::~SoNguyenLon() {
@@ -37,4 +44,43 @@ SoNguyenLon::~SoNguyenLon() {
   delete[] a;
 }
 
-void SoNguyenLon::fix() {}
+void SoNguyenLon::fix() {
+
+  char *temp = new char[LEN];
+  char *tempSeg = new char[LEN];
+  char *p = temp;
+
+  int tempInt = 0;
+
+  strcpy(temp, buffer);
+
+  while (*p) {
+    p++;
+  }
+
+  while (p != temp || *p == '\0') {
+    for (int i = 0; p != temp && i <= BASE_LEN; i++) {
+
+      p--;
+    }
+
+    strcpy(tempSeg, p);
+    *p = '\0';
+
+    tempInt = atoi(tempSeg);
+    a[nA++] = tempInt;
+
+    if (p == temp)
+      break;
+  }
+}
+
+void SoNguyenLon::in() {
+
+  printf("\n%s\n", buffer);
+  for (int i = 0; i <= nA; i++) {
+    printf("Base 10^%d : %*d\n", i, BASE_LEN, a[i]);
+  }
+}
+
+SoNguyenLon 
