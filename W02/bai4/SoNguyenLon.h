@@ -25,6 +25,7 @@ public:
   SoNguyenLon(const SoNguyenLon &snl);
 
   SoNguyenLon &cong(const SoNguyenLon &);
+  SoNguyenLon &tru(const SoNguyenLon &);
 
   ~SoNguyenLon();
 

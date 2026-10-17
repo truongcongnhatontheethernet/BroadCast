@@ -151,3 +151,40 @@ void SoNguyenLon::removeZeroes() {
 
   strcpy(buffer, p);
 }
+
+// SoNguyenLon &SoNguyenLon::tru(const SoNguyenLon &src) {
+
+//   SoNguyenLon *temp = new SoNguyenLon();
+
+//   temp->nA = std::max(this->nA, src.nA);
+
+//   for (int i = 0; i < temp->nA; i++) {
+//     temp->a[i] = this->a[i] + src.a[i];
+//   }
+
+//   for (int i = 0; i < temp->nA; i++) {
+
+//     bool up = false;
+
+//     if (temp->a[i] >= BASE) {
+//       temp->a[i] -= BASE;
+//       temp->a[i + 1]++;
+//       up = true;
+//     }
+
+//     if (i == temp->nA - 1 && up)
+//       temp->nA++;
+//   }
+
+//   char *t = new char[LEN];
+//   for (int i = nA - 1; i >= 0; i--) {
+
+//     sprintf(t, "%d", temp->a[i]);
+//     strcat(temp->buffer, t);
+//   }
+
+//   delete[] t;
+//   temp->removeZeroes();
+
+//   return *temp;
+// }
