@@ -15,12 +15,14 @@ private:
   int nA;
 
   void fix();
+  void removeZeroes();
 
 public:
   SoNguyenLon();
   SoNguyenLon(int);
   SoNguyenLon(int, int);
   SoNguyenLon(const char *);
+  SoNguyenLon(const SoNguyenLon &snl);
 
   SoNguyenLon &cong(const SoNguyenLon &);
 
