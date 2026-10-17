@@ -82,5 +82,3 @@ void SoNguyenLon::in() {
     printf("Base 10^%d : %*d\n", i, BASE_LEN, a[i]);
   }
 }
-
-SoNguyenLon 
