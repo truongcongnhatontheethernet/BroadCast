@@ -10,7 +10,8 @@ int main() {
   n2.xuat();
   Ngay n3(-100, 16, 1990);
   n3.xuat();
-  Ngay n4(1403);
+  Ngay n4(1000);
+  // 1403
   n4.xuat();
   Ngay n5("12-12-2012");
   n5.xuat();
