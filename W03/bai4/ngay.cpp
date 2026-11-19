@@ -7,13 +7,36 @@ void Ngay::chuanHoa() {
   _th = abs(_th);
   _n = abs(_n);
 
-  int thangDu = (_ng - 1) / 30;
-  _ng = (_ng - 1) % 30 + 1;
-  _th += thangDu;
+  if (_ng == 0)
+    _ng = 1;
+  if (_th == 0)
+    _th = 1;
+  if (_n == 0)
+    _n = 1;
 
-  int namDu = (_th - 1) / 12;
-  _th = (_th - 1) % 12 + 1;
-  _n += namDu;
+  while (_th > 12) {
+    _th -= 12;
+    _n++;
+  }
+
+  while (_ng > dayInMonth(_n, _th)) {
+    _ng -= dayInMonth(_n, _th);
+    _th++;
+    if (_th > 12) {
+      _th -= 12;
+      _n++;
+    }
+  }
+}
+
+bool Ngay::isLeap(int nam) {
+  return (nam % 4 == 0 && nam % 100 != 0) || (nam % 400 == 0);
+}
+
+int Ngay::dayInMonth(int nam, int th) {
+  if (th == 2)
+    return 28 + isLeap(nam);
+  return 30 + (th + (th > 7)) % 2;
 }
 
 Ngay::Ngay() { _ng = _th = _n = 1; }
@@ -53,7 +76,9 @@ Ngay Ngay::operator+(Ngay &src) {
   Ngay res(*this);
 
   res._n += src._n;
+  res.chuanHoa();
   res._th += src._th;
+  res.chuanHoa();
   res._ng += src._ng;
 
   res.chuanHoa();
@@ -71,7 +96,9 @@ Ngay Ngay::operator-(Ngay &src) {
 
   Ngay res(*this);
   res._n -= src._n;
+  res.chuanHoa();
   res._th -= src._th;
+  res.chuanHoa();
   res._ng -= src._ng;
 
   res.chuanHoa();

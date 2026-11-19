@@ -14,6 +14,5 @@ int main() {
   snl4.in();
   snl5.in();
 
-
   return 0;
 }

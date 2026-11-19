@@ -12,6 +12,8 @@ class Ngay {
 private:
   int _ng, _th, _n;
   void chuanHoa();
+  bool isLeap(int);
+  int dayInMonth(int, int);
 
 public:
   Ngay();
