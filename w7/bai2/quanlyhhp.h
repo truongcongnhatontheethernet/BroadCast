@@ -6,6 +6,7 @@
 #include "ht.h"
 #include "htg.h"
 #include "hthv.h"
+#include <cstdio>
 #include <fstream>
 #include <ios>
 #include <ostream>
@@ -54,6 +55,31 @@ public:
     for (int i = 0; i < items.size(); i++) {
       items[i]->xuat(os);
       os << endl;
+    }
+  }
+
+  void xuatSpecified(ostream &os) {
+
+    float totalArea = 0, totalP = 0;
+    string nameT = "";
+
+    vector<HinhHocPhang *> t = items;
+    while (t.size() > 0) {
+      nameT = t[0]->getName();
+      for (int i = 0; i < t.size();) {
+
+        if (t[i]->getName() == nameT) {
+          totalArea += t[i]->dienTich();
+          totalP += t[i]->chuVi();
+          t.erase(t.begin() + i);
+        }
+
+        else
+          i++;
+      }
+
+      os << nameT << " : ";
+      printf("Tong dien tich = %.2f ; Tong chu vi = %.2f\n", totalArea, totalP);
     }
   }
 };

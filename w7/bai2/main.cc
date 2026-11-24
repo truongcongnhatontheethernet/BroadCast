@@ -12,6 +12,8 @@ int main() {
   manage.readFromFiles(infile);
 
   manage.xuatAll(cout);
+  cout << endl;
+  manage.xuatSpecified(cout);
 
   return EXIT_SUCCESS;
 }
